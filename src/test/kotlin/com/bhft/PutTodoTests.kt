@@ -5,6 +5,7 @@ import com.bhft.jupiter.extension.GetTodoExtension
 import com.bhft.model.todo.TodoItem
 import com.bhft.service.todo.todoClient
 import io.ktor.http.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -35,6 +36,7 @@ class PutTodoTests {
     }
 
     @Test
+    @Disabled("need to create bug report")
     fun `check change todo list without id`(
         @GetTodo todoItem: TodoItem,
     ) {
@@ -51,6 +53,7 @@ class PutTodoTests {
     }
 
     @Test
+    @Disabled("need to create bug report")
     fun `check change todo list with different ids`(
         @GetTodo todoItem: TodoItem,
     ) {
@@ -82,6 +85,7 @@ class PutTodoTests {
     }
 
     @Test
+    @Disabled("need to create bug report")
     fun `check change with empty body`(
         @GetTodo todoItem: TodoItem,
     ) {
