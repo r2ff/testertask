@@ -1,5 +1,10 @@
 package com.bhft.config
 
+/**
+ * Configuration interface that provides access to test environment settings.
+ * Supports different environments (local, remote) through a system property "test.env".
+ * remote is not implemented.
+ */
 interface Config {
     companion object {
         fun getConfig(): Config =

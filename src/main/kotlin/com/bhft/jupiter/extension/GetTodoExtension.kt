@@ -11,6 +11,11 @@ import org.junit.jupiter.api.extension.ParameterResolver
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
+/**
+ * JUnit Jupiter extension that provides TodoItem injection for test methods.
+ * This extension creates a new TodoItem before each test and makes it available
+ * for injection into test methods using the @GetTodo annotation.
+ */
 class GetTodoExtension :
     ParameterResolver,
     BeforeEachCallback {
