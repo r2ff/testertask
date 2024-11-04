@@ -61,10 +61,10 @@ class FlowObserver<T>(
 
     /**
      * findNext
-     * возвращает имеющиеся на данный момент сообщения, соответствующие условию в block
-     * @param timeout - время на ожидание и поиск значений
-     * @param timeoutMessage - если заполнено, при отсутствии ответа/подходящих значений выведет ошибку с этим текстом
-     * @param block - условие фильтрации возвращающее boolean
+     * Returns the currently available messages that match the condition specified in the block.
+     * @param timeout - the time to wait and search for values
+     * @param timeoutMessage - if provided, an error with this message will be displayed if no response or matching values are found
+     * @param block - the filtering condition that returns a boolean
      * @receiver
      * @return
      */
