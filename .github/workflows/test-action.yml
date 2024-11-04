@@ -18,38 +18,41 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v4
+      - name: Checkout sources
+        uses: actions/checkout@v4
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
-    - name: Load app Docker image
-      run: docker load -i ./app/todo-app.tar
+      - name: Load app Docker image
+        run: docker load -i ./app/todo-app.tar
 
-    - name: Run tests
-      run: ./gradlew clean test
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
-    - name: Load test report history
-      uses: actions/checkout@v4
-      if: always()
-      continue-on-error: true
-      with:
-        ref: allure-pages
-        path: allure-pages
+      - name: Run tests
+        run: ./gradlew clean test
 
-    - name: Build test report
-      uses: simple-elf/allure-report-action@v1.9
-      if: always()
-      with:
-        gh_pages: allure-pages
-        allure_history: allure-history
-        allure_results: build/allure-results
+      - name: Load test report history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: allure-pages
+          path: allure-pages
 
-    - name: Publish test report
-      uses: peaceiris/actions-gh-pages@v4
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: allure-pages
-        publish_dir: allure-history
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          gh_pages: allure-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: allure-pages
+          publish_dir: allure-history
