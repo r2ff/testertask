@@ -42,7 +42,6 @@ dependencies {
     testImplementation(kotlin("test", kotlinVersion))
     testImplementation(kotlin("test-junit5", kotlinVersion))
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.2")
-//    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.2")
 }
 
 tasks.test {
